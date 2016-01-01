@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Youtube API</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="libs/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/3.0.7/ui-grid.css">
+      <link rel="stylesheet" href="style.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <style> [ng:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak { display: none !important; } 
+      </style>
+   </head>
+   <body ng-app="indeeApp">
+      <div class="container"ng-controller="videoCtrl">
+         <div class="row">
+            <div class="col-md-12 text-center">
+               <h1>Fetch Video Details Using Youtube APIs</h1>
+            </div>
+         </div>
+         <hr>
+         <div class="row">
+            <div class="col-md-12 well text-center">
+               <form ng-submit="getVideos()" class="form-inline">
+                  <div class="form-group">
+                     <label for="email">Enter Channel Name:</label>
+                     <input type="text" class="form-control" ng-model="channelName" placeholder="channelName"required>
+                  </div>
+                  <button class="btn btn-primary" type="submit">Search Videos</button>
+                  <button class="btn btn-default" ng-click="clear()">Clear</button>
+                  <h4>Sample Channel Names: {{sampleNames}}</h4>
+               </form>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12  table-responsive" ng-if="infoSize>0">
+               <table class="table">
+                  <thead>
+                     <tr>
+                        <th>Title</th>
+                        <th>Thumbnail</th>
+                        <th>Descrption</th>
+                        <th>Published Date</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat="info in information">
+                        <td>{{info.snippet.title}}</td>
+                        <td><img src="{{info.snippet.thumbnails.default.url}}"</td>
+                        <td>{{info.snippet.description}}</td>
+                        <td>{{info.snippet.publishedAt}}</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
+      <script src="libs/ui-bootstrap.min.js"></script>
+      <script src="app.js"></script>
+   </body>
+</html>
