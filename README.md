@@ -1,2 +1,2 @@
 # youtubeAPIFetch
-Get the youtube video details using YoutubeAPI in angularjs.
+Get the youtube video details using YoutubeAPI
